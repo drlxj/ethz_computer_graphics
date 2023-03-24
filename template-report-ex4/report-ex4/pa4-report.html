@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Computer Graphics - PA4</title>
+
+    <link href="resources/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/offcanvas.css" rel="stylesheet">
+    <link href="resources/custom2014.css" rel="stylesheet">
+    <link href="resources/twentytwenty.css" rel="stylesheet" type="text/css" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="container headerBar">
+		<h1>Programming Assignment 4 - Xuejing Luo</h1>
+</div>
+
+<div class="container contentWrapper">
+<div class="pageContent">
+
+	<!-- ================================================================= -->
+
+	<h2>Part 1: Dielectric BSDF</h2>
+
+	<p>Files modified: dielectric.cpp</p>
+
+    <p>First I calculate the probability of reflectiona vs. refraction using the fresnel equation (<strong>F</strong>). 
+       The task requires the probability of a reflection event takes place is proportional to <strong>F</strong>.
+       Therefore, I randomly sample a pdf and compare it with <strong>F</strong>. If the pdf is smaller than <strong>F</strong>,
+       the reflection event takes place and the direction of the outgoing light is same as what mirror.cpp is implemented. 
+       If not, the refraction event takes place. The outgoing light's direction is calculated using snell equation. </p>
+
+	<!-- ================================================================= -->
+
+	<h2>Part 2: Path Tracing</h2>
+
+    <p>Files modified: path_mats.cpp, path_mis.cpp </p>
+
+    <h3>path_mats Implementation</h3>
+
+    <p>The code is similar with direct_mats integrator, but add a while-loop. The loop is broken by using the Russian Roulette technique.</p>
+
+    <h3>path_mis</h3>
+
+    <p>The code is implemented according to the pseudocode in the tutorial for exercise 4. </p>
+
+    <h3>Validation</h3>
+
+    <p>The first screenshot is test result from test-direct.xml, and the other is test result from test-furnace.xml</p>
+    
+    <img src="images/test/test_direct.png" alt="Test results"/> <br> <br> <br> <br>
+    <img src="images/test/test_furnace.png" alt="Test results"/> <br> <br> <br> <br>
+
+    <p>Cornell box scene</p>
+
+    <div class="twentytwenty-container">
+        <img src="images/cbox/cbox_path_mats.png" alt="Mats" class="img-responsive">
+        <img src="images/cbox/cbox_path_mis.png" alt="Mis" class="img-responsive">
+        <img src="images/cbox/ref/cbox_path_mis_512spp.png" alt="Reference (Mis)" class="img-responsive">
+    </div> <br>
+
+    <p>Table scene</p>
+
+    <div class="twentytwenty-container">
+        <img src="images/table/table_path_mats.png" alt="Mats" class="img-responsive">
+        <img src="images/table/table_path_mis.png" alt="Mis" class="img-responsive">
+        <img src="images/table/ref/table_path_mis_512spp.png" alt="Reference (Mis)" class="img-responsive">
+    </div> <br>
+
+	<!-- ================================================================= -->
+
+    <h2>Part 3: Photon Mapping</h2>
+
+    <p>Files modified: arealight.cpp, photonmapper.cpp</p>
+
+    <h3>Validation</h3>
+
+    <p>Cornell box scene</p>
+
+    <div class="twentytwenty-container">
+        <img src="images/cbox/ref/cbox_pmap_32spp_10Mp.png" alt="Reference" class="img-responsive">
+        <img src="images/cbox/cbox_pmap.png" alt="Mine" class="img-responsive">
+    </div> <br>
+
+    <p>Table scene</p>
+
+    <div class="twentytwenty-container">
+        <img src="images/table/ref/table_pmap_256spp_5Mp.png" alt="Reference" class="img-responsive">
+        <img src="images/table/table_pmap.png" alt="Mine" class="img-responsive">
+    </div> <br>
+
+    <p>Clocks scene</p>
+
+    <div class="twentytwenty-container">
+        <img src="images/clocks/ref/clocks_64spp_10Mp.png" alt="Reference" class="img-responsive">
+        <img src="images/clocks/clocks.png" alt="Mine" class="img-responsive">
+    </div> <br>
+</div>
+</div>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="resources/bootstrap.min.js"></script>
+<script src="resources/jquery.event.move.js"></script>
+<script src="resources/jquery.twentytwenty.js"></script>
+
+
+<script>
+$(window).load(function(){$(".twentytwenty-container").twentytwenty({default_offset_pct: 0.5});});
+</script>
+
+</body>
+</html>

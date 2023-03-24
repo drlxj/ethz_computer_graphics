@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="../favicon.ico" />
+
+    <title>Computer Graphics - PA1</title>
+
+    <link href="resources/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/offcanvas.css" rel="stylesheet">
+    <link href="resources/custom2014.css" rel="stylesheet">
+    <link href="resources/twentytwenty.css" rel="stylesheet" type="text/css" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+<body>
+
+<div class="container headerBar">
+		<h1>Programming Assignment 1 - Name Here</h1>
+</div>
+
+<div class="container contentWrapper">
+<div class="pageContent">
+
+	<!-- ================================================================= -->
+
+	<h2>Part 1: Sample Warping</h2>
+
+	<!-- <p>TODO: report problems, comments... </p> -->
+
+	<h3>Uniform disk</h3>
+
+    <!-- <p>TODO: report derivation, implementation, and show point distribution screenshot</p> -->
+    
+    <img src="images/example_disk.png" alt="Uniform disk"/>
+
+    <h3>Uniform sphere</h3>
+
+    <!-- <p>TODO: report derivation, implementation, and show point distribution screenshot</p> -->
+    
+    <img src="images/example_sphere.png" alt="Uniform sphere"/>
+
+    <h3>Uniform hemisphere</h3>
+
+    <!-- <p>TODO: report derivation, implementation, and show point distribution screenshot</p> -->
+    
+    <img src="images/example_hemi_uni.png" alt="Uniform hemisphere"/>
+
+    <h3>Uniform sphere cap</h3>
+
+    <!-- <p>TODO: report derivation, implementation, and show point distribution screenshot</p> -->
+    
+    <img src="images/example_cap.png" alt="Uniform sphere cap"/>
+
+    <h3>Cosine hemisphere</h3>
+
+    <!-- <p>TODO: report derivation, implementation, and show point distribution screenshot</p> -->
+    
+    <img src="images/exapmle_hemi_cos.png" alt="Cosine hemisphere"/>
+
+    <h3>Beckmann distribution</h3>
+
+    <p> The CDF function is calculated as follows: </p>
+
+    <body> \begin{align} I = P(\pi/2,2\pi) & = \int_0^{2\pi} \int_0^{\frac{\pi}{2}} \frac{e^{\frac{-\tan^2{\theta}}{\alpha^2}}}{\pi\, \alpha^2 \cos^4 \theta }\cos{\theta}\sin{\theta} ~ d\theta ~ d\phi  \\
+                        & = 2\pi \int_0^{\frac{\pi}{2}} \frac{e^{\frac{-\tan^2{\theta}}{\alpha^2}}}{\pi\, \alpha^2 \cos^4 \theta }\cos{\theta}\sin{\theta} ~ d\theta \\ 
+            \end{align}
+            Set $$ x = cos^2{\theta} $$ Then $$ dx = dcos^2{\theta} = -2 \cos{\theta}\sin{\theta} ~ d\theta  $$
+            \begin{align}
+            I & = \frac{1}{\alpha^2} \int_0^1 e^\frac{x-1}{\alpha^2 x}\frac{1}{x^2} dx \\
+              & = \frac{e ^ \frac{1}{\alpha^2}}{\alpha^2} \int_0^1 e^\frac{-1}{\alpha^2 x}\frac{1}{x^2} dx 
+              & = e ^ \frac{1}{\alpha^2} [\ e^\frac{-1}{\alpha^2 x} ]\ ^1_0
+            \end{align}
+            Therefore, $$ p( \theta ) = 1 -  e ^ \frac{1}{\alpha^2} e ^ \frac{1}{-\alpha^2 cos^2{\theta}} = 1 - e ^ \frac{-tan^2{\theta}}{\alpha^2} $$
+            $$\theta = arctan( \sqrt{\alpha^2 * (-ln(1 - p(\theta)))} ) $$
+    </body>
+    
+    <img src="images/example_beck.png" alt="Beckmann distribution"/> <br> <br> <br> <br>
+
+	<!-- ================================================================= -->
+
+	<h2>Part 2: Validation</h2>
+
+	<p>TODO: report problems, comments, and screenshots of all passed tests... </p>
+
+	<h3>Uniform disk</h3>
+    <img src="images/p_disk.png" alt="Uniform disk test"/>
+
+    <h3>Uniform sphere cap (\(\cos{\theta_{max}} = 0.5\))</h3>
+    <img src="images/p_cap.png" alt="Uniform sphere cap test"/>
+
+    <h3>Uniform hemisphere</h3>
+    <img src="images/p_hemi_uni.png" alt="Uniform hemisphere test"/>
+
+    <h3>Uniform sphere</h3>
+    <img src="images/p_sphere.png" alt="Uniform sphere test"/>
+
+    <h3>Cosine hemisphere</h3>
+    <img src="images/p_hemi_cos.png" alt="Cosine hemisphere test"/>
+
+    <h3>Beckmann distribution (\(\alpha = 0.5\))</h3>
+    <img src="images/p_beck.png" alt="Beckmann distribution test"/> <br>
+
+	<!-- ================================================================= -->
+</div>
+</div>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="resources/bootstrap.min.js"></script>
+<script src="/js/offcanvas.js"></script>
+<script src="resources/jquery.event.move.js"></script>
+<script src="resources/jquery.twentytwenty.js"></script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script>
+$(window).load(function(){$(".twentytwenty-container").twentytwenty({default_offset_pct: 0.5});});
+</script>
+
+</body>
+</html>
