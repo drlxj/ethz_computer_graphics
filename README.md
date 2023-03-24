@@ -1,4 +1,4 @@
-# Computer Graphics - AS 22
+# ETHz Computer Graphics - AS 22
 <!-- vscode-markdown-toc -->
 * 1. [Related Website](#RelatedWebsite)
 * 2. [Overview](#Overview)
